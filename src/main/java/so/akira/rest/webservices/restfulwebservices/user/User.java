@@ -2,9 +2,16 @@ package so.akira.rest.webservices.restfulwebservices.user;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 public class User {
   private Integer id;
+
+  @Size(min = 2, message = "Minimum 2 characters")
   private String name;
+
+  @Past(message = "Date must be present or past")
   private LocalDate birthDate;
 
   public User(Integer id, String name, LocalDate birthDate) {
